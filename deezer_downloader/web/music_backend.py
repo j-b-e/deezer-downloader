@@ -78,7 +78,9 @@ def clean_filename(path):
 
 def download_song_and_get_absolute_filename(search_type, song, playlist_name=None):
     if search_type == TYPE_ALBUM:
-        song_filename = "{:02d} - {} {}.mp3".format(int(song['TRACK_NUMBER']),
+        song_filename = "{} - {:02d} - {} {}.mp3".format(
+                                                    song.get("DISK_NUMBER","1"),
+                                                    int(song['TRACK_NUMBER']),
                                                     song['ART_NAME'],
                                                     song['SNG_TITLE'])
     else:
