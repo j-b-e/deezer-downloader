@@ -81,10 +81,12 @@ def download_song_and_get_absolute_filename(search_type, song, playlist_name=Non
 
     file_extension = get_file_extension()
     if search_type == TYPE_ALBUM:
-        song_filename = "{:02d} - {} {}.{}".format(int(song['TRACK_NUMBER']),
-                                                   song['ART_NAME'],
-                                                   song['SNG_TITLE'],
-                                                   file_extension)
+        song_filename = "{} - {:02d} - {} {}.{}".format(
+                                                    song.get("DISK_NUMBER", "1"),
+                                                    int(song['TRACK_NUMBER']),
+                                                    song['ART_NAME'],
+                                                    song['SNG_TITLE'],
+                                                    file_extension)
     else:
         song_filename = "{} - {}.{}".format(song['ART_NAME'],
                                             song['SNG_TITLE'],
